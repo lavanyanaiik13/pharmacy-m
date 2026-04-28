@@ -1,0 +1,231 @@
+.contact-page {
+  padding: 90px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e6f7ff, #e0f7f5);
+  min-height: 100vh;
+}
+
+/* HERO */
+.contact-hero {
+  text-align: center;
+  padding: 70px;
+  background: rgba(76, 193, 179, 0.585);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+}
+
+.contact-hero h1 {
+  font-size: 50px;
+  color: #006d77;
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #006d77;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background: green;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: pulse 1.5s infinite;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.card {
+  flex: 1;
+  padding: 15px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.emergency {
+  background: rgba(255, 80, 80, 0.2);
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* FORM */
+.form-box {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.8);
+}
+
+textarea {
+  min-height: 100px;
+}
+
+/* COUNT */
+.count {
+  font-size: 12px;
+  color: #006d77;
+}
+
+/* STAR */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star {
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.star.active {
+  color: gold;
+  transform: scale(1.2);
+}
+
+/* APPOINTMENT */
+.appointment {
+  display: flex;
+  gap: 10px;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #006d77, #00a8a8);
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* SIDE */
+.side {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* MAP */
+.map iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* FAQ */
+.faq {
+  margin-top: 15px;
+}
+
+details {
+  background: rgba(255,255,255,0.6);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* ANIMATION */
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.3);}
+  100% {transform: scale(1);}
+}
+/* BIGGER MAP */
+.big-map iframe {
+  width: 100%;
+  height: 320px; /* increased size */
+  border-radius: 15px;
+  border: none;
+}
+
+/* CLICKABLE CARDS */
+.cards a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.75);
+}
+/* SUCCESS POPUP */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: rgba(0, 168, 168, 0.95);
+  color: white;
+
+  padding: 18px 28px;
+  border-radius: 12px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+  animation: popup 0.4s ease;
+  z-index: 9999;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* BIG MAP */
+.big-map iframe {
+  width: 100%;
+  height: 340px;
+  border-radius: 15px;
+  border: none;
+}
