@@ -173,11 +173,12 @@ html {
 
 
 /* ✅ FORM (MAIN FIX HERE) */
+/* ✅ FORM */
 .booking-form {
   flex: 1;
   min-width: 300px;
   background: rgba(255, 255, 255, 0.9);
-  padding: 25px 30px 30px; /* 🔼 reduced top padding */
+  padding: 25px 30px 30px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -185,22 +186,23 @@ html {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* ✅ ALIGN HEADING PERFECTLY */
+/* ✅ HEADING */
 .booking-form h2 {
-  margin-top: 0;   /* 🔼 removes extra top space */
+  margin-top: 0;
   margin-bottom: 10px;
 }
 
-/* INPUT */
+/* ✅ INPUTS */
 .booking-form input,
 .booking-form select {
   padding: 12px;
   border-radius: 10px;
   border: 1px solid #ccc;
   outline: none;
+  font-size: 15px;
 }
 
-/* BUTTON */
+/* ✅ BUTTON */
 .booking-form button {
   padding: 12px;
   border: none;
@@ -209,12 +211,14 @@ html {
   border-radius: 25px;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 16px;
 }
 
 .booking-form button:hover {
   transform: scale(1.05);
 }
-/* SUCCESS */
+
+/* ✅ SUCCESS */
 .success {
   position: fixed;
   top: 40%;

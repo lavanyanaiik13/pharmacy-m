@@ -17,6 +17,7 @@ export default function Contact() {
 
   // ✅ NEW: success popup state
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,12 +27,33 @@ export default function Contact() {
 
   // ✅ NEW: submit handler
   const handleSubmit = () => {
-    setSuccess(true);
 
-    setTimeout(() => {
-      setSuccess(false);
-    }, 2500);
-  };
+  const nameRegex = /^[A-Za-z ]+$/;
+
+  // EMPTY FORM VALIDATION
+  if (
+    !form.name ||
+    !form.email ||
+    !form.message ||
+    !form.date ||
+    !form.time
+  ) {
+    alert("⚠ Please fill the form!");
+    return;
+  }
+
+  // NAME VALIDATION
+  if (!nameRegex.test(form.name)) {
+    alert("⚠ Name should contain only alphabets!");
+    return;
+  }
+
+  setSuccess(true);
+
+  setTimeout(() => {
+    setSuccess(false);
+  }, 2500);
+};
 
   return (
     <div className="contact-page">
@@ -86,8 +108,15 @@ export default function Contact() {
         {/* FORM */}
         <div className="form-box">
 
-          <input name="name" placeholder="Full Name" onChange={handleChange} />
-          <input name="email" placeholder="Email" onChange={handleChange} />
+<input
+  name="name"
+  placeholder="Full Name"
+  value={form.name}
+  onChange={(e) => {
+    const value = e.target.value.replace(/[^A-Za-z ]/g, "");
+    setForm({ ...form, name: value });
+  }}
+/>          <input name="email" placeholder="Email" onChange={handleChange} />
 
           <select name="purpose" onChange={handleChange}>
             <option>General Inquiry</option>

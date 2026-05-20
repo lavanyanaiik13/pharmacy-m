@@ -1,24 +1,47 @@
 
-
-
 import { useState, useRef } from "react";
 import "./HealthPackages.css";
 
 function HealthPackages() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState("");
+  const [name, setName] = useState("");
+const [age, setAge] = useState("");
+const [phone, setPhone] = useState("");
 
   const packagesRef = useRef(null);
   const bookingRef = useRef(null);
 
   const handleBooking = (e) => {
-    e.preventDefault();
-    setShowSuccess(true);
+  e.preventDefault();
 
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
-  };
+  // NAME VALIDATION
+  if (!/^[A-Za-z ]+$/.test(name)) {
+    alert("Name should contain only letters");
+    return;
+  }
+
+  // AGE VALIDATION
+  if (!/^\d{1,2}$/.test(age)) {
+    alert("Age should contain maximum 2 digits");
+    return;
+  }
+
+  // PHONE VALIDATION
+  // PHONE VALIDATION
+if (!/^[6789][0-9]{9}$/.test(phone)) {
+  alert(
+    "Phone number must start with 6, 7, 8, or 9 and contain exactly 10 digits"
+  );
+  return;
+}
+
+  setShowSuccess(true);
+
+  setTimeout(() => {
+    setShowSuccess(false);
+  }, 3000);
+};
 
   const scrollToPackages = () => {
     packagesRef.current.scrollIntoView({ behavior: "smooth" });
@@ -182,9 +205,51 @@ function HealthPackages() {
           <form onSubmit={handleBooking} className="booking-form">
             <h2>Book Your Checkup</h2>
 
-            <input type="text" placeholder="Name" required />
-            <input type="number" placeholder="Age" required />
-            <input type="tel" placeholder="Phone Number" required />
+           {/* NAME */}
+<input
+  type="text"
+  placeholder="Name"
+  value={name}
+  onChange={(e) => {
+    const value = e.target.value.replace(/[^A-Za-z ]/g, "");
+    setName(value);
+  }}
+  required
+/>
+
+{/* AGE */}
+<input
+  type="text"
+  placeholder="Age"
+  value={age}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 2);
+    setAge(value);
+  }}
+  required
+/>
+
+{/* PHONE */}
+{/* PHONE */}
+<input
+  type="tel"
+  placeholder="Phone Number"
+  value={phone}
+  onChange={(e) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    // First digit must be 6,7,8,9
+    if (value.length === 1 && !/[6789]/.test(value)) {
+      value = "";
+    }
+
+    // Max 10 digits
+    value = value.slice(0, 10);
+
+    setPhone(value);
+  }}
+  required
+/>
 
             <select
               value={selectedPackage}

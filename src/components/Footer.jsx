@@ -47,7 +47,7 @@ function Footer() {
         </p>
       </div>
 
-      {/* HOVER STYLES */}
+      {/* HOVER + RESPONSIVE STYLES */}
       <style>
         {`
           a:hover {
@@ -63,6 +63,41 @@ function Footer() {
             padding-left: 8px;
             border-radius: 6px;
             cursor: pointer;
+          }
+
+          /* RESPONSIVE DESIGN */
+          @media (max-width: 1024px) {
+            footer div {
+              padding: 30px 40px !important;
+            }
+          }
+
+          @media (max-width: 768px) {
+            footer div {
+              flex-direction: column !important;
+              text-align: center;
+              align-items: center;
+              padding: 25px 20px !important;
+            }
+
+            a {
+              display: block;
+              margin-bottom: 8px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            footer {
+              font-size: 14px;
+            }
+
+            h2, h3 {
+              font-size: 18px !important;
+            }
+
+            p {
+              font-size: 13px !important;
+            }
           }
         `}
       </style>

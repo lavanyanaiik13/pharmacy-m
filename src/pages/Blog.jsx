@@ -212,65 +212,101 @@ export default function Blog() {
       </div>
 
       {/* FEEDBACK */}
-      <div className="feedback-wrapper">
+     <div className="feedback-wrapper">
 
-        <h2 className="feedback-title">💬 Your Feedback Matters</h2>
+  <h2 className="feedback-title">💬 Your Feedback Matters</h2>
 
-        <div className="feedback-container">
+  <div className="feedback-container">
 
-          <div className="feedback-form">
+    {/* FORM */}
+    <form
+      className="feedback-form"
+      onSubmit={(e) => {
+        e.preventDefault();
 
-            <input type="text" required />
-            <label>Name</label>
+        if (rating === 0) {
+          alert("Please give a rating");
+          return;
+        }
 
-            <input type="email" required />
-            <label>Email</label>
+        handleSubmit();
+      }}
+    >
 
-            <select>
-              {feedbackType.map((t, i) => (
-                <option key={i}>{t}</option>
-              ))}
-            </select>
+      {/* NAME */}
+      <label>Name</label>
 
-            {/* STAR RATING */}
-<div className="rating-box">
-  <p className="rating-label">
-    {rating === 0
-      ? "Rate your experience"
-      : `${rating} / 5 Selected`}
-  </p>
+      <input
+        type="text"
+        required
+        pattern="[A-Za-z ]+"
+        title="Only alphabets are allowed"
+        onInput={(e) => {
+          e.target.value = e.target.value.replace(/[^A-Za-z ]/g, "");
+        }}
+      />
 
-  <div className="star-row">
-    {[1, 2, 3, 4, 5].map((star) => (
-      <span
-        key={star}
-        className={star <= (hover || rating) ? "star active" : "star"}
-        onMouseEnter={() => setHover(star)}
-        onMouseLeave={() => setHover(0)}
-        onClick={() => setRating(star)}
-      >
-        ★
-      </span>
-    ))}
-  </div>
+      {/* EMAIL */}
+      <label>Email</label>
 
-  <small className="rating-type">
-    ⭐ Blog Quality / Feedback Rating
-  </small>
-</div>
+      <input type="email" required />
 
-            <textarea placeholder="Write your message..." />
+      {/* SELECT */}
+      <select required defaultValue="">
+        <option value="" disabled>
+          Select Feedback Type
+        </option>
 
-            {/* ONLY CHANGE HERE */}
-            <button className="feedback-btn" onClick={handleSubmit}>
-              Submit
-            </button>
+        {feedbackType.map((t, i) => (
+          <option key={i}>{t}</option>
+        ))}
+      </select>
 
-          </div>
+      {/* STAR RATING */}
+      <div className="rating-box">
 
+        <p className="rating-label">
+          {rating === 0
+            ? "Rate your experience"
+            : `${rating} / 5 Selected`}
+        </p>
+
+        <div className="star-row">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <span
+              key={star}
+              className={star <= (hover || rating) ? "star active" : "star"}
+              onMouseEnter={() => setHover(star)}
+              onMouseLeave={() => setHover(0)}
+              onClick={() => setRating(star)}
+            >
+              ★
+            </span>
+          ))}
         </div>
+
+        <small className="rating-type">
+          ⭐ Blog Quality / Feedback Rating
+        </small>
+
       </div>
 
+      {/* MESSAGE */}
+      <textarea
+        placeholder="Write your message..."
+        required
+      />
+
+      {/* BUTTON */}
+      <button type="submit" className="feedback-btn">
+        Submit
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
     </div>
   );
 }

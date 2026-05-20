@@ -6,6 +6,35 @@ function Prescription() {
   const [verified, setVerified] = useState(false);
   const [showVerifyMsg, setShowVerifyMsg] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [name, setName] = useState("");
+const [age, setAge] = useState("");
+const [phone, setPhone] = useState("");
+
+const handleNameChange = (e) => {
+  const value = e.target.value;
+
+  if (/^[A-Za-z\s]*$/.test(value)) {
+    setName(value);
+  }
+};
+
+const handleAgeChange = (e) => {
+  const value = e.target.value;
+
+  if (/^\d{0,2}$/.test(value)) {
+    setAge(value);
+  }
+};
+
+const handlePhoneChange = (e) => {
+  const value = e.target.value;
+
+  if (/^\d{0,10}$/.test(value)) {
+    if (value === "" || /^[6789]/.test(value)) {
+      setPhone(value);
+    }
+  }
+};
 
   const medicines = [
     { 
@@ -104,14 +133,33 @@ function Prescription() {
 
         <div className="box premium-box float delay">
           <h2>🧍 Patient Details</h2>
-          <input type="text" placeholder="Full Name" />
-          <input type="number" placeholder="Age" />
-          <select>
+         <input
+  type="text"
+  placeholder="Full Name"
+  value={name}
+  onChange={handleNameChange}
+/>
+
+<input
+  type="text"
+  placeholder="Age"
+  value={age}
+  onChange={handleAgeChange}
+  maxLength={2}
+/>
+ <select>
             <option>Gender</option>
             <option>Male</option>
             <option>Female</option>
           </select>
-          <input type="text" placeholder="Phone" />
+
+<input
+  type="text"
+  placeholder="Phone"
+  value={phone}
+  onChange={handlePhoneChange}
+  maxLength={10}
+/>
           <textarea placeholder="Address"></textarea>
         </div>
 

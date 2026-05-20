@@ -1,7 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function Navbar() {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;
 
@@ -46,15 +48,44 @@ function Navbar() {
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            flex-wrap: wrap;
           }
 
           .links {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
             gap: 10px;
-            flex: 1;
+            align-items: center;
+          }
+
+          /* HAMBURGER */
+          .hamburger {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+          }
+
+          /* MOBILE */
+          @media (max-width: 768px) {
+            .hamburger {
+              display: block;
+            }
+
+            .links {
+              position: absolute;
+              top: 70px;
+              right: 0;
+              left: 0;
+              background: linear-gradient(90deg, #053b3b, #0f766e, #14b8a6);
+              flex-direction: column;
+              align-items: center;
+              padding: 15px 0;
+              gap: 15px;
+              display: none;
+            }
+
+            .links.open {
+              display: flex;
+            }
           }
         `}
       </style>
@@ -65,11 +96,20 @@ function Navbar() {
           {/* LOGO */}
           <div className="logo">🌿 HealNest</div>
 
+          {/* HAMBURGER */}
+          <div
+            className="hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </div>
+
           {/* LINKS */}
-          <div className="links">
+          <div className={`links ${menuOpen ? "open" : ""}`}>
             <Link
               className={`nav-link ${isActive("/") ? "active-link" : ""}`}
               to="/"
+              onClick={() => setMenuOpen(false)}
             >
               🏠 Home
             </Link>
@@ -77,6 +117,7 @@ function Navbar() {
             <Link
               className={`nav-link ${isActive("/products") ? "active-link" : ""}`}
               to="/products"
+              onClick={() => setMenuOpen(false)}
             >
               💊 Products
             </Link>
@@ -84,6 +125,7 @@ function Navbar() {
             <Link
               className={`nav-link ${isActive("/prescription") ? "active-link" : ""}`}
               to="/prescription"
+              onClick={() => setMenuOpen(false)}
             >
               📄 Prescription
             </Link>
@@ -91,6 +133,7 @@ function Navbar() {
             <Link
               className={`nav-link ${isActive("/health-packages") ? "active-link" : ""}`}
               to="/health-packages"
+              onClick={() => setMenuOpen(false)}
             >
               🧑‍⚕️ Packages
             </Link>
@@ -98,6 +141,7 @@ function Navbar() {
             <Link
               className={`nav-link ${isActive("/blog") ? "active-link" : ""}`}
               to="/blog"
+              onClick={() => setMenuOpen(false)}
             >
               📝 Blog
             </Link>
@@ -105,6 +149,7 @@ function Navbar() {
             <Link
               className={`nav-link ${isActive("/contact") ? "active-link" : ""}`}
               to="/contact"
+              onClick={() => setMenuOpen(false)}
             >
               📞 Contact
             </Link>

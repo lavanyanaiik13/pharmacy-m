@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(-45deg, #d1ebec, #def1f3, #e6f7f8);
+  background: linear-gradient(-45deg, #d1ebec, #def3e2, #e6f7f8);
   background-size: 400% 400%;
   animation: gradientBG 10s ease infinite;
 }
@@ -64,29 +64,18 @@ body {
 
 /* BOX GRID */
 .three-box {
-  /* 🔻 reduce bottom gap */
-
-  /* ⬆️ pull section upward */
   margin-top: 60px;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-
-  /* 🔻 reduce gap between boxes */
   gap: 20px;
-
-  /* 🔻 reduce inside spacing */
   padding: 10px 20px;
 }
 
 /* BOX */
 .box {
-  background: rgba(255,255,255,0.7);
+  background: rgba(216, 239, 247, 0.7);
   backdrop-filter: blur(10px);
-
-  /* 🔻 slightly reduced padding */
   padding: 30px;
-
   border-radius: 20px;
   text-align: center;
   transition: 0.4s;
@@ -97,30 +86,56 @@ body {
   transform: translateY(-10px) scale(1.02);
 }
 
-/* FLOAT ANIMATION (UNCHANGED) */
+/* FLOAT */
 .float {
   animation: float 4s ease-in-out infinite;
 }
-.delay { animation-delay: 1s; }
-.delay2 { animation-delay: 2s; }
+
+.delay {
+  animation-delay: 1s;
+}
+
+.delay2 {
+  animation-delay: 2s;
+}
 
 @keyframes float {
-  0%,100% { transform: translateY(0);}
-  50% { transform: translateY(-10px);}
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* INPUT */
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   margin: 8px 0;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #b2dfdb;
+  outline: none;
 }
 
-input:focus, textarea:focus {
+/* FOCUS */
+input:focus,
+textarea:focus,
+select:focus {
   border-color: #26a69a;
   box-shadow: 0 0 10px rgba(38,166,154,0.5);
+}
+
+/* ERROR */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: -4px;
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 /* BUTTON */
@@ -134,9 +149,10 @@ input:focus, textarea:focus {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: 0.3s;
 }
 
-/* ✨ SHINE EFFECT */
+/* SHINE EFFECT */
 .shine::before {
   content: "";
   position: absolute;
@@ -152,7 +168,9 @@ input:focus, textarea:focus {
 }
 
 @keyframes shineMove {
-  to { left: 120%; }
+  to {
+    left: 120%;
+  }
 }
 
 .btn:hover {
@@ -170,8 +188,15 @@ input:focus, textarea:focus {
 }
 
 @keyframes pop {
-  from { transform: scale(0.5); opacity:0;}
-  to { transform: scale(1); opacity:1;}
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .disabled {
