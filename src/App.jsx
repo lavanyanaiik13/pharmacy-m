@@ -45,6 +45,7 @@ const styles = {
     flex: 1,
     overflow: "hidden",
   },
+  
 };
 
 export default App;
